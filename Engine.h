@@ -15,12 +15,12 @@ public:
 
 	static int getScreenWidth();
 	static int getScreenHeight();
-
+	static void quit();
 
 	void Run(int w, int h);
 	
 	bool init();
-	
+
 public:
 	
 	double xVelocity;
@@ -30,14 +30,16 @@ public:
 
 private:
 
-	void processInput();
+	void update();
 	void gameLoop();
 	void draw();
-	player *mPlayer;
+	player* mPlayer;
 	SDL_Window* mWindow;
 	SDL_Renderer* mRenderer;
 	Texture mBackground;
-	bool mIsRunning;
+	static bool mIsRunning;
 	static int mScreenWidth;
 	static int mScreenHeight;
+
+
 };

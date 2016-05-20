@@ -1,22 +1,27 @@
 #include "Engine.h"
 #include "player.h"
+#include "Input.h"
 
 int Engine::mScreenWidth = 0;
 int Engine::mScreenHeight = 0;
+bool Engine::mIsRunning = true;
 
 Engine::Engine()
 {
 	mRenderer = nullptr;
 	mWindow = nullptr;
-
-	mIsRunning = true;			
+	
+	//myGameScene = new GameScene();
+	//player
+	//enemies
+	//"points"
 }
 
 Engine::~Engine()
 {
 	SDL_DestroyWindow(mWindow);
 	SDL_DestroyRenderer(mRenderer);
-	mPlayer = nullptr;
+
 	SDL_Quit();
 }
 
@@ -74,112 +79,18 @@ void Engine::gameLoop()
 	mPlayer = new player(mRenderer);
 	while (mIsRunning)
 	{
-		
-		processInput();
-		
-		if (!mPlayer->isDead )
-		{
-			mPlayer->setVelocity(xVelocity, yVelocity);
-			draw();
-		}
+		update();
 	}
 }
 
-void Engine::processInput()
+void Engine::update()
 {
-	
-	//printf("im getting ready to process your inputs");
-
-	// keystate pointer points to an array of key states (1 down or 0 up)
-	const Uint8* keyState = SDL_GetKeyboardState(nullptr);
-	bool keydown = false;
-	
-	SDL_Event evnt;
-	while (SDL_PollEvent(&evnt))
+	Input::ProcessInput();
+	if (!mPlayer->isDead)
 	{
-		switch (evnt.type)
-		{
-			case SDL_QUIT:
-			{
-				mIsRunning = false;
-				break;
-			}
-			case SDL_KEYDOWN:
-			{
-				switch (evnt.key.keysym.sym)
-				{
-				case SDLK_w:
-					yVelocity += -5;
-					break;
-				case SDLK_s:
-					yVelocity += 5;
-					break;
-				case SDLK_a:
-					xVelocity += -5;
-					break;
-				case SDLK_d:
-					xVelocity += 5;
-					break;
-				case SDLK_ESCAPE:
-					mIsRunning = false;
-					break;
-
-				}
-				break;
-			}
-		
-		/*
-			case SDL_KEYUP:
-			{
-				switch (evnt.key.keysym.sym)
-				{
-					case SDLK_w:
-						if (yVelocity < 0)
-						{
-							yVelocity = 0.0;
-						}
-						break;
-					case SDLK_s:
-						if (yVelocity > 0)
-						{
-							yVelocity = 0.0;
-						}
-						break;
-					case SDLK_a:
-						if (xVelocity < 0)
-						{
-							xVelocity = 0.0;
-						}
-						break;
-					case SDLK_d:
-						if (xVelocity > 0)
-						{
-						xVelocity = 0.0 ;
-						}
-						break;	
-				}
-				break;
-			}
-			*/
-
-
-
-
-
-		
-
-			
-			
-
-		}
-
-		
+		mPlayer->handleInput();
+		draw();
 	}
-
-	
-
-
-
 }
 
 void Engine::draw()
@@ -195,10 +106,15 @@ void Engine::draw()
 }
 int Engine::getScreenWidth()
 {
-	return  mScreenWidth;
+	return mScreenWidth;
 }
 
 int Engine::getScreenHeight()
 {
 	return mScreenHeight;
+}
+
+void Engine::quit()
+{
+	mIsRunning = false;
 }
