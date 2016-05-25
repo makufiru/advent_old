@@ -10,18 +10,12 @@ Engine::Engine()
 {
 	mRenderer = nullptr;
 	mWindow = nullptr;
-	
-	//myGameScene = new GameScene();
-	//player
-	//enemies
-	//"points"
 }
 
 Engine::~Engine()
 {
 	SDL_DestroyWindow(mWindow);
 	SDL_DestroyRenderer(mRenderer);
-
 	SDL_Quit();
 }
 
@@ -66,9 +60,7 @@ bool Engine::init()
 		return false;
 	}
 
-
 	mBackground.loadFromFile(mRenderer, "resources/space_bg.png");
-
 	return true;
 	
 }
@@ -77,6 +69,8 @@ bool Engine::init()
 void Engine::gameLoop()
 {
 	mPlayer = new player(mRenderer);
+	mCrosshair = new crosshair(mRenderer);
+	mInput = new Input();
 	while (mIsRunning)
 	{
 		update();
@@ -85,10 +79,11 @@ void Engine::gameLoop()
 
 void Engine::update()
 {
-	Input::ProcessInput();
+	mInput->ProcessInput();
+	mCrosshair->HandleInput(mInput);
 	if (!mPlayer->isDead)
 	{
-		mPlayer->handleInput();
+		mPlayer->HandleInput(mInput);
 		draw();
 	}
 }
@@ -99,7 +94,8 @@ void Engine::draw()
 	SDL_RenderClear(mRenderer);
 
 	SDL_RenderCopy(mRenderer, mBackground.getTexture(), NULL, NULL);
-	mPlayer->render(mRenderer);
+	mPlayer->Render(mRenderer);
+	mCrosshair->Render(mRenderer);
 
 	SDL_RenderPresent(mRenderer);
 

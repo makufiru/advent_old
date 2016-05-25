@@ -4,6 +4,7 @@
 #include <SDL.h>
 #include "Texture.h"
 #include "player.h"
+#include "crosshair.h"
 
 class Engine
 {
@@ -33,6 +34,8 @@ private:
 	void update();
 	void gameLoop();
 	void draw();
+	Input* mInput;
+	crosshair* mCrosshair;
 	player* mPlayer;
 	SDL_Window* mWindow;
 	SDL_Renderer* mRenderer;
