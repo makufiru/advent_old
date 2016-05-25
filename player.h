@@ -19,8 +19,8 @@ public:
 
 	SDL_Texture* getPlayerTexture();
 
-	void render(SDL_Renderer *mRenderer);
-	void handleInput();
+	void Render(SDL_Renderer *mRenderer);
+	void HandleInput(Input *input);
 
 public:
 	bool isDead = false;

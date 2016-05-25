@@ -2,8 +2,14 @@
 #include <iostream>
 #include <string>
 #include <SDL.h>
+#include <unordered_map>
 #include "Texture.h"
 
+struct MousePosition
+{
+	int x;
+	int y;
+};
 
 enum InputEvent
 {
@@ -17,14 +23,17 @@ enum InputEvent
 class Input
 {
 public:
-	static void ProcessInput();
-	static bool keyPressed(InputEvent input);
+	Input();
+	~Input();
+	void ProcessInput();
+	bool KeyPressed(InputEvent input);
+	MousePosition GetMousePosition();
 public: 
 
 
 private: 
-	static bool getKeyDirection(Uint32 direction);
 
 private:
-
+	MousePosition mousePosition;
+	std::unordered_map<InputEvent, bool> keyStateMap;
 };

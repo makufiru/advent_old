@@ -129,10 +129,12 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="Input.cpp" />
+    <ClCompile Include="crosshair.cpp" />
     <ClCompile Include="Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h" />
+    <ClInclude Include="crosshair.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="resource.h" />

@@ -42,6 +42,9 @@
     <ClCompile Include="Input.cpp">
       <Filter>Source Files\input</Filter>
     </ClCompile>
+    <ClCompile Include="crosshair.cpp">
+      <Filter>Source Files\entities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Texture.h">
@@ -58,6 +61,9 @@
     </ClInclude>
     <ClInclude Include="Input.h">
       <Filter>Source Files\input</Filter>
+    </ClInclude>
+    <ClInclude Include="crosshair.h">
+      <Filter>Source Files\entities</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

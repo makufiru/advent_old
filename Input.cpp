@@ -1,51 +1,61 @@
 #include "Input.h"
 #include "Engine.h"
-#include <map>
+#include <unordered_map>
 
-std::map<InputEvent, bool> key_state_map;
+
+Input::Input()
+{
+	SDL_ShowCursor(SDL_DISABLE);
+	MousePosition mousePosition;
+	std::unordered_map<InputEvent, bool> keyStateMap;
+}
+
+Input::~Input()
+{
+
+}
+
 
 void Input::ProcessInput()
-{
-	SDL_Event event;
-	while (SDL_PollEvent(&event))
+{	
+	SDL_Event e;
+	while (SDL_PollEvent(&e))
 	{
-		if (event.type == SDL_QUIT || event.key.keysym.sym == SDLK_ESCAPE)
+		if (e.type == SDL_QUIT || e.key.keysym.sym == SDLK_ESCAPE)
 		{
 			Engine::quit();
 		}
-		else if (event.type == SDL_KEYDOWN || event.type == SDL_KEYUP)
+		else if (e.type == SDL_KEYDOWN || e.type == SDL_KEYUP)
 		{
-			switch (event.key.keysym.sym)
+			switch (e.key.keysym.sym)
 			{
 			case SDLK_w:
-				key_state_map[MOVE_UP] = getKeyDirection(event.type);
+				keyStateMap[MOVE_UP] = e.type == SDL_KEYDOWN ? true : false;
 				break;
 			case SDLK_s:
-				key_state_map[MOVE_DOWN] = getKeyDirection(event.type);
+				keyStateMap[MOVE_DOWN] = e.type == SDL_KEYDOWN ? true : false;
 				break;
 			case SDLK_a:
-				key_state_map[MOVE_LEFT] = getKeyDirection(event.type);
+				keyStateMap[MOVE_LEFT] = e.type == SDL_KEYDOWN ? true : false;
 				break;
 			case SDLK_d:
-				key_state_map[MOVE_RIGHT] = getKeyDirection(event.type);
+				keyStateMap[MOVE_RIGHT] = e.type == SDL_KEYDOWN ? true : false;
 				break;
 			default:
 				break;
 			}
 		}
 	}
+	// I moved this outside of event polling, otherwise it's too jerky.
+	SDL_GetMouseState(&mousePosition.x, &mousePosition.y);
 }
 
-bool Input::keyPressed(InputEvent input)
+bool Input::KeyPressed(InputEvent input)
 {
-	return key_state_map[input];
+	return keyStateMap[input];
 }
 
-bool Input::getKeyDirection(Uint32 direction)
+MousePosition Input::GetMousePosition()
 {
-	if (direction == SDL_KEYDOWN)
-	{
-		return true;
-	}
-	return false;
+	return mousePosition;
 }
