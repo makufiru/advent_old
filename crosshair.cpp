@@ -3,9 +3,7 @@
 
 crosshair::crosshair(SDL_Renderer* mRenderer)
 {
-	MousePosition cursorPosition;
-	cursorPosition.x = 0;
-	cursorPosition.y = 0;
+	MousePosition cursorPosition = { 0, 0 };
 
 	mCrosshairTexture.loadFromFile(mRenderer, "resources/crosshair.png");
 	mWidth = mCrosshairTexture.getWidth();
@@ -21,9 +19,8 @@ crosshair::~crosshair()
 void crosshair::HandleInput(Input* input)
 {
 	MousePosition mousePos = input->GetMousePosition();
-	cursorPosition.x = mousePos.x - (mWidth * 0.5);
-	cursorPosition.y = mousePos.y - (mWidth * 0.5);
-	//delete &mousePos;
+	cursorPosition.x = mousePos.x - (mWidth / 2);
+	cursorPosition.y = mousePos.y - (mWidth / 2);
 }
 
 SDL_Texture *crosshair::getCrosshairTexture() {

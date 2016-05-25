@@ -19,20 +19,6 @@ player::~player()
 	
 }
 
-//Texture* player::render(SDL_Rect* spriteClip , double angle, SDL_Point* center, SDL_RendererFlip spriteFlip)
-//{
-//	mRenderTexture = nullptr;
-//	SDL_Rect renderQuad = { mWidth, mHeight };
-//	if (spriteClip != nullptr)
-//	{
-//		renderQuad.w = spriteClip->w;
-//		renderQuad.h = spriteClip->h;
-//
-//	}
-//
-//
-//}
-
 void player::HandleInput(Input* input) 
 {
 	if (input->KeyPressed(MOVE_UP))
@@ -93,7 +79,6 @@ int player::mGetPosY() {
 SDL_Texture *player::getPlayerTexture() {
 	return mSDLTexture;
 }
-
 
 void player::Render(SDL_Renderer *mRenderer) {
 	SDL_Rect renderQuad = { mPosX, mPosY, mWidth, mHeight };

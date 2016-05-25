@@ -15,7 +15,6 @@ Input::~Input()
 
 }
 
-
 void Input::ProcessInput()
 {	
 	SDL_Event e;

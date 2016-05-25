@@ -10,17 +10,12 @@ Engine::Engine()
 {
 	mRenderer = nullptr;
 	mWindow = nullptr;
-	//myGameScene = new GameScene();
-	//player
-	//enemies
-	//"points"
 }
 
 Engine::~Engine()
 {
 	SDL_DestroyWindow(mWindow);
 	SDL_DestroyRenderer(mRenderer);
-
 	SDL_Quit();
 }
 
@@ -65,9 +60,7 @@ bool Engine::init()
 		return false;
 	}
 
-
 	mBackground.loadFromFile(mRenderer, "resources/space_bg.png");
-
 	return true;
 	
 }
