@@ -1,6 +1,15 @@
+#Project folders
+.vs
+x64
+Debug
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
+
+# VS caches
+*.VC.opendb
+*.VC.db
 
 # Folder config file
 Desktop.ini

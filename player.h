@@ -2,10 +2,16 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include "Texture.h"
+#include "player.h"
+#include "SDL.h"
+#include "Input.h"
 
+enum Axis {
+	X,
+	Y
+};
 
-
-class player 
+class player
 {
 public:
 	player(SDL_Renderer *mRenderer);
@@ -14,22 +20,17 @@ public:
 	SDL_Texture* getPlayerTexture();
 
 	void render(SDL_Renderer *mRenderer);
-
-	void mMovePos(double mPlayerXVel, double mPlayerYVel);
-	
-	void setVelocity(double mPlayerXVel, double mPlayerYVel);
+	void handleInput();
 
 public:
-
 	bool isDead = false;
 
-
 private:
-	double mGetPosX();
-	double mGetPosY();
-	int mGetPlayerRot();
+	int mGetPosX();
+	int mGetPosY();
+	int getMoveSpeed();
+	void movePlayer(Axis axis, int moveAmount);
 
-	int mSetPlayerRot();
 private:
 	double mPlayerHealth;
 	Texture mPlayerTexture;
@@ -39,16 +40,9 @@ private:
 	Texture mRenderTexture;
 	int mWidth;
 	int mHeight;
+	int moveSpeed;
 
 	//player coords
-	double mPosX;
-	double mPosY;
-
-	double xVel;
-	double yVel;
-	double mPlayerXVel;
-	double mPlayerYVel;
-
-
-	
+	int mPosX;
+	int mPosY;
 };
