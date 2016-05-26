@@ -37,6 +37,17 @@ void player::HandleInput(Input* input)
 	{
 		movePlayer(X, moveSpeed);
 	}
+
+	//Calculate the angle to the mouse cursor and set the player rotation accordingly
+	MousePosition mousePosition = input->GetMousePosition();
+	double playerPosX = mPosX + mWidth / 2;
+	double playerPosY = mPosY + mHeight / 2;
+
+	double deltaX = mousePosition.x - playerPosX;
+	double deltaY = mousePosition.y - playerPosY;
+
+	mAngle = atan2(deltaY, deltaX) * 180 / M_PI;
+	mAngle += 90.0; //Add 90 to rotate the texture correctly
 }
 
 void player::movePlayer(Axis axis, int moveAmount) 
@@ -82,5 +93,5 @@ SDL_Texture *player::getPlayerTexture() {
 
 void player::Render(SDL_Renderer *mRenderer) {
 	SDL_Rect renderQuad = { mPosX, mPosY, mWidth, mHeight };
-	SDL_RenderCopy(mRenderer, mSDLTexture, NULL, &renderQuad );
+	SDL_RenderCopyEx(mRenderer, mSDLTexture, NULL, &renderQuad, mAngle, NULL, SDL_FLIP_NONE);
 }
