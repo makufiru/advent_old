@@ -4,6 +4,7 @@
 #include "Texture.h"
 #include "SDL.h"
 #include "Input.h"
+#include "player.h"
 
 
 class crosshair

@@ -19,7 +19,7 @@ public:
 	static void quit();
 
 	void Run(int w, int h);
-	
+	void shoot();
 	bool init();
 
 public:
@@ -28,7 +28,7 @@ public:
 	double yVelocity;
 
 	std::string path;
-
+	
 private:
 
 	void update();

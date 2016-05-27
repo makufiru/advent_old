@@ -2,8 +2,6 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include "Texture.h"
-#include "player.h"
-#include "SDL.h"
 #include "Input.h"
 
 enum Axis {
@@ -21,13 +19,14 @@ public:
 
 	void Render(SDL_Renderer *mRenderer);
 	void HandleInput(Input *input);
+	int getPosX();
+	int getPosY();
 
 public:
 	bool isDead = false;
+	double spriteAngle;
 
 private:
-	int mGetPosX();
-	int mGetPosY();
 	int getMoveSpeed();
 	void movePlayer(Axis axis, int moveAmount);
 

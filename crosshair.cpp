@@ -23,11 +23,13 @@ void crosshair::HandleInput(Input* input)
 	cursorPosition.y = mousePos.y - (mWidth / 2);
 }
 
-SDL_Texture *crosshair::getCrosshairTexture() {
+SDL_Texture *crosshair::getCrosshairTexture()
+{
 	return mSDLTexture;
 }
 
-void crosshair::Render(SDL_Renderer *mRenderer) {
+void crosshair::Render(SDL_Renderer *mRenderer) 
+{
 	SDL_Rect renderQuad = { cursorPosition.x, cursorPosition.y, mWidth, mHeight };
 	SDL_RenderCopy(mRenderer, mSDLTexture, NULL, &renderQuad );
 }

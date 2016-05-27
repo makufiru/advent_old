@@ -3,9 +3,10 @@
 
 player::player(SDL_Renderer* mRenderer)
 {
-		mPlayerTexture.loadFromFile(mRenderer, "resources/playerSprite_2.png");
+		mPlayerTexture.loadFromFile(mRenderer, "resources/shipSprite_1.png");
 		mWidth = mPlayerTexture.getWidth();
 		mHeight = mPlayerTexture.getHeight();
+		spriteAngle = 0.0;
 
 		mPosX = (Engine::getScreenWidth() / 2) - (mWidth / 2);
 		mPosY = (Engine::getScreenHeight() /2) - (mHeight / 2);
@@ -36,6 +37,11 @@ void player::HandleInput(Input* input)
 	if (input->KeyPressed(MOVE_RIGHT))
 	{
 		movePlayer(X, moveSpeed);
+	}
+	if (input->KeyPressed(SHOOT))
+	{
+		printf(" \n key press passed to player object");
+		//-----------------------------------Do shit here. 
 	}
 }
 
@@ -68,11 +74,11 @@ void player::movePlayer(Axis axis, int moveAmount)
 int player::getMoveSpeed() {
 	return moveSpeed;
 }
-int player::mGetPosX(){
+int player::getPosX(){
 	return mPosX;
 }
 
-int player::mGetPosY() {
+int player::getPosY() {
 	return mPosY;	
 }
 

@@ -1,6 +1,7 @@
 #include "Engine.h"
 #include "player.h"
 #include "Input.h"
+#include "projectile.h"
 
 int Engine::mScreenWidth = 0;
 int Engine::mScreenHeight = 0;
@@ -113,4 +114,10 @@ int Engine::getScreenHeight()
 void Engine::quit()
 {
 	mIsRunning = false;
+}
+
+
+void Engine::shoot()
+{
+	
 }
