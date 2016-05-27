@@ -44,4 +44,7 @@ private:
 	//player coords
 	int mPosX;
 	int mPosY;
+
+	//Player rotation in degrees
+	double mAngle;
 };
