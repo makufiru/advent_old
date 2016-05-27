@@ -40,12 +40,13 @@ void Input::ProcessInput()
 				break;
 			case SDLK_d:
 				keyStateMap[MOVE_RIGHT] = e.type == SDL_KEYDOWN ? true : false;
+				printf("pressed right");
 				break;
 			default:
 				break;
 			}
 		}
-		else if (e.type == SDL_MOUSEBUTTONDOWN)
+		else if (e.type == SDL_MOUSEBUTTONDOWN || e.type == SDL_MOUSEBUTTONUP)
 		{
 			if (SDL_BUTTON(SDL_BUTTON_LEFT))
 			{

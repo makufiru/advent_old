@@ -11,6 +11,9 @@ Engine::Engine()
 {
 	mRenderer = nullptr;
 	mWindow = nullptr;
+
+	// if you turn this off you can watch it do ugly antialiasing on rotation
+	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "2");
 }
 
 Engine::~Engine()

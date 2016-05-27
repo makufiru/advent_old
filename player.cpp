@@ -3,6 +3,9 @@
 
 player::player(SDL_Renderer* mRenderer)
 {
+
+		//mPlayerTexture.loadFromFile(mRenderer, "resources/shipSprite_1.png");
+
 		mPlayerTexture.loadFromFile(mRenderer, "resources/shipSprite_1.png");
 		mWidth = mPlayerTexture.getWidth();
 		mHeight = mPlayerTexture.getHeight();
@@ -10,7 +13,7 @@ player::player(SDL_Renderer* mRenderer)
 
 		mPosX = (Engine::getScreenWidth() / 2) - (mWidth / 2);
 		mPosY = (Engine::getScreenHeight() /2) - (mHeight / 2);
-		moveSpeed = 10;
+		moveSpeed = 5;
 
 		mSDLTexture = mPlayerTexture.getTexture();
 }
@@ -39,6 +42,7 @@ void player::HandleInput(Input* input)
 		movePlayer(X, moveSpeed);
 	}
 
+
 	if (input->KeyPressed(SHOOT))
 	{
 		printf(" \n key press passed to player object");
@@ -46,13 +50,16 @@ void player::HandleInput(Input* input)
 	}
 
 
+
 	//Calculate the angle to the mouse cursor and set the player rotation accordingly
 	MousePosition mousePosition = input->GetMousePosition();
 	double playerPosX = mPosX + mWidth / 2;
 	double playerPosY = mPosY + mHeight / 2;
 
+
 	double deltaX = mousePosition.x - playerPosX;
 	double deltaY = mousePosition.y - playerPosY;
+	
 
 	mAngle = atan2(deltaY, deltaX) * 180 / M_PI;
 	mAngle += 90.0; //Add 90 to rotate the texture correctly
