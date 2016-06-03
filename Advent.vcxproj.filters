@@ -25,6 +25,9 @@
     <Filter Include="Source Files\input">
       <UniqueIdentifier>{61efb1ba-6a6a-43ff-bd66-4404fc961b22}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\entities\particles">
+      <UniqueIdentifier>{8b18864a-2fb7-4428-b157-0bba55d49fa7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -45,6 +48,12 @@
     <ClCompile Include="crosshair.cpp">
       <Filter>Source Files\entities</Filter>
     </ClCompile>
+    <ClCompile Include="projectile.cpp">
+      <Filter>Source Files\entities\particles</Filter>
+    </ClCompile>
+    <ClCompile Include="weapons.cpp">
+      <Filter>Source Files\entities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Texture.h">
@@ -63,6 +72,15 @@
       <Filter>Source Files\input</Filter>
     </ClInclude>
     <ClInclude Include="crosshair.h">
+      <Filter>Source Files\entities</Filter>
+    </ClInclude>
+    <ClInclude Include="projectile.h">
+      <Filter>Source Files\entities\particles</Filter>
+    </ClInclude>
+    <ClInclude Include="utilities.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="weapons.h">
       <Filter>Source Files\entities</Filter>
     </ClInclude>
   </ItemGroup>
