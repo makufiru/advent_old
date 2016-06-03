@@ -51,6 +51,9 @@
     <ClCompile Include="projectile.cpp">
       <Filter>Source Files\entities\particles</Filter>
     </ClCompile>
+    <ClCompile Include="weapons.cpp">
+      <Filter>Source Files\entities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Texture.h">
@@ -73,6 +76,12 @@
     </ClInclude>
     <ClInclude Include="projectile.h">
       <Filter>Source Files\entities\particles</Filter>
+    </ClInclude>
+    <ClInclude Include="utilities.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="weapons.h">
+      <Filter>Source Files\entities</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

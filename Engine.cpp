@@ -31,14 +31,11 @@ void Engine::Run(int w, int h)
 	if (init() == false)
 	{
 		printf("Failed to init the Engine. SDL Error:  %s\n", SDL_GetError());
-
 	}
 	else
 	{
 		gameLoop();
-
 	}
-
 }
 
 bool Engine::init()
@@ -70,24 +67,46 @@ bool Engine::init()
 }
 
 
+//Engine::gameLoop()  Kappa.
 void Engine::gameLoop()
 {
 	mPlayer = new player(mRenderer);
 	mCrosshair = new crosshair(mRenderer);
 	mInput = new Input();
+	
+	float dt = 1 / 60.0f;
+	float currentTime = SDL_GetTicks() / 1000.0f;
+
+
 	while (mIsRunning)
 	{
-		update();
+		processInputs();
+		
+		//update stuff
+		float newTime = SDL_GetTicks() / 1000.0f;
+		float frameTime = newTime - currentTime;
+		currentTime = newTime;
+
+		while (frameTime > 0.0f)
+		{
+			float deltaTime = std::min(frameTime, dt);
+			frameTime -= deltaTime;
+		}
+			update();
 	}
 }
 
-void Engine::update()
+void Engine::processInputs()
 {
 	mInput->ProcessInput();
 	mCrosshair->HandleInput(mInput);
+	mPlayer->HandleInput(mInput);
+
+}
+void Engine::update()
+{
 	if (!mPlayer->isDead)
 	{
-		mPlayer->HandleInput(mInput);
 		draw();
 	}
 }
@@ -99,6 +118,7 @@ void Engine::draw()
 
 	SDL_RenderCopy(mRenderer, mBackground.getTexture(), NULL, NULL);
 	mPlayer->Render(mRenderer);
+
 	mCrosshair->Render(mRenderer);
 
 	SDL_RenderPresent(mRenderer);

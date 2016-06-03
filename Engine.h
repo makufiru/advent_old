@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <SDL.h>
+#include <algorithm>
 #include "Texture.h"
 #include "player.h"
 #include "crosshair.h"
@@ -22,7 +23,7 @@ public:
 	void shoot();
 	bool init();
 
-public:
+public: 
 	
 	double xVelocity;
 	double yVelocity;
@@ -30,13 +31,14 @@ public:
 	std::string path;
 	
 private:
-
+	void processInputs();
 	void update();
 	void gameLoop();
 	void draw();
 	Input* mInput;
 	crosshair* mCrosshair;
 	player* mPlayer;
+	;
 	SDL_Window* mWindow;
 	SDL_Renderer* mRenderer;
 	Texture mBackground;

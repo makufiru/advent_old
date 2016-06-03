@@ -40,7 +40,6 @@ void Input::ProcessInput()
 				break;
 			case SDLK_d:
 				keyStateMap[MOVE_RIGHT] = e.type == SDL_KEYDOWN ? true : false;
-				printf("pressed right");
 				break;
 			default:
 				break;
@@ -65,6 +64,7 @@ bool Input::KeyPressed(InputEvent input)
 	return keyStateMap[input];
 }
 
+//returns mouse position. used by crosshair class. 
 MousePosition Input::GetMousePosition()
 {
 	return mousePosition;
