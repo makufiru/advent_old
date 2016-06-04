@@ -1,14 +1,10 @@
 #include "Input.h"
 #include "Engine.h"
 #include <unordered_map>
-#include "projectile.h"
-
 
 Input::Input()
 {
 	SDL_ShowCursor(SDL_DISABLE);
-	MousePosition mousePosition;
-	std::unordered_map<InputEvent, bool> keyStateMap;
 }
 
 Input::~Input()
@@ -23,7 +19,7 @@ void Input::ProcessInput()
 	{
 		if (e.type == SDL_QUIT || e.key.keysym.sym == SDLK_ESCAPE)
 		{
-			Engine::quit();
+			Engine::Quit();
 		}
 		else if (e.type == SDL_KEYDOWN || e.type == SDL_KEYUP)
 		{
@@ -54,7 +50,6 @@ void Input::ProcessInput()
 			}
 		}
 	}
-	// I moved this outside of event polling, otherwise it's too jerky.
 	SDL_GetMouseState(&mousePosition.x, &mousePosition.y);
 	
 }
@@ -64,7 +59,6 @@ bool Input::KeyPressed(InputEvent input)
 	return keyStateMap[input];
 }
 
-//returns mouse position. used by crosshair class. 
 MousePosition Input::GetMousePosition()
 {
 	return mousePosition;

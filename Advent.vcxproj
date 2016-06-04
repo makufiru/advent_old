@@ -127,23 +127,23 @@
   <ItemGroup>
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="player.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="Input.cpp" />
-    <ClCompile Include="crosshair.cpp" />
-    <ClCompile Include="projectile.cpp" />
+    <ClCompile Include="Crosshair.cpp" />
+    <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="Texture.cpp" />
-    <ClCompile Include="weapons.cpp" />
+    <ClCompile Include="Weapon.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h" />
-    <ClInclude Include="crosshair.h" />
-    <ClInclude Include="utilities.h" />
+    <ClInclude Include="Crosshair.h" />
+    <ClInclude Include="Utils.h" />
     <ClInclude Include="Input.h" />
-    <ClInclude Include="player.h" />
-    <ClInclude Include="projectile.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="Projectile.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Texture.h" />
-    <ClInclude Include="weapons.h" />
+    <ClInclude Include="Weapon.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Advent.rc" />

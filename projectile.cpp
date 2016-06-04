@@ -1,16 +1,14 @@
-#include "projectile.h"
+#include "Projectile.h"
 
-
-projectile::projectile(Vector2 position)
+Projectile::Projectile(Vector2 position)
 {
-	mPos = position;
+	pos = position;
 	
-	mVel = { 0,0 };
+	vel = { 0,0 };
 	
 }
 
-
-projectile::~projectile()
+Projectile::~Projectile()
 {
 
 }

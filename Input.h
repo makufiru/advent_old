@@ -1,9 +1,7 @@
 #pragma once
 #include <iostream>
 #include <string>
-#include <SDL.h>
 #include <unordered_map>
-#include "Texture.h"
 
 struct MousePosition
 {
@@ -28,10 +26,6 @@ public:
 	void ProcessInput();
 	bool KeyPressed(InputEvent input);
 	MousePosition GetMousePosition();
-public: 
-
-
-private: 
 
 private:
 	MousePosition mousePosition;

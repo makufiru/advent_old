@@ -2,33 +2,28 @@
 
 #include <SDL.h>
 #include <SDL_image.h>
-#include "utilities.h"
+#include "utils.h"
 #include "Texture.h"
 
-
-
-
-
-class projectile
+class Projectile
 {
 public:
-	projectile(Vector2 position);
-	~projectile();
+	Projectile(Vector2 position);
+	~Projectile();
 
 	//SDL_Texture* getProjectileTexture();
-
-	//void render(SDL_Renderer *mRenderer);
+	//void render(SDL_Renderer *renderer);
 	
 private:
 	
-	SDL_Renderer *mRenderer;
-	Texture mRenderTexture;
-	int mWidth;
-	int mHeight;
+	SDL_Renderer *renderer;
+	Texture renderTexture;
+	int width;
+	int height;
 
 	//bullet coords
-	Vector2 mPos;
-	Vector2 mVel;
+	Vector2 pos;
+	Vector2 vel;
 };
 
 
