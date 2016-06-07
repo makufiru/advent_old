@@ -11,7 +11,6 @@ Engine::Engine()
 {
 	renderer = nullptr;
 	window = nullptr;
-
 	// if you turn this off you can watch it do ugly antialiasing on rotation
 	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "2");
 }
@@ -72,15 +71,12 @@ void Engine::gameLoop()
 	player = new Player(renderer);
 	crosshair = new Crosshair(renderer);
 	input = new Input();
-	
 	float dt = 1 / 60.0f;
 	float currentTime = SDL_GetTicks() / 1000.0f;
-
 
 	while (isRunning)
 	{
 		processInputs();
-		
 		//update stuff
 		float newTime = SDL_GetTicks() / 1000.0f;
 		float frameTime = newTime - currentTime;
@@ -106,6 +102,7 @@ void Engine::update()
 {
 	if (!player->IsDead)
 	{
+		player->Update();
 		draw();
 	}
 }
@@ -114,15 +111,12 @@ void Engine::draw()
 {
 	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 	SDL_RenderClear(renderer);
-
 	SDL_RenderCopy(renderer, background.GetTexture(), NULL, NULL);
 	player->Render(renderer);
-
 	crosshair->Render(renderer);
-
 	SDL_RenderPresent(renderer);
-
 }
+
 int Engine::GetScreenWidth()
 {
 	return screenWidth;

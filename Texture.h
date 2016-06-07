@@ -15,13 +15,13 @@ public:
 
 	bool LoadFromFile(SDL_Renderer* gRenderer, const std::string path);
 	void Free();
-	int GetWidth();
-	int GetHeight();
+	float GetWidth();
+	float GetHeight();
 	SDL_Texture* GetTexture();
 
 private:
 
 	SDL_Texture* texture;
-	int width;
-	int height;
+	float width;
+	float height;
 };

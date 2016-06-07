@@ -23,5 +23,5 @@ private:
 	Texture renderTexture;
 	int width;
 	int height;
-	MousePosition cursorPosition;
+	Vector2 cursorPosition;
 };

@@ -3,28 +3,29 @@
 
 Weapon::Weapon(SDL_Renderer *renderer)
 {
-	projectileTexture.LoadFromFile(renderer, "resources/bulletSprite_1.png");
-	SDLTexture = projectileTexture.GetTexture();
-
+	this->renderer = renderer;
 };
 
-void Weapon::Shoot(Vector2 position)
+void Weapon::Shoot(Vector2 position, Vector2 direction, double angle)
 {
-	projectiles.emplace_back(position);
-	printf("shot stuff. pew pew.");
-}
+	projectiles.emplace_back(renderer, position, direction, angle);
 
-
-SDL_Texture *Weapon::GetProjectileTexture()
-{
-	return SDLTexture;
 }
 
 void Weapon::Render(SDL_Renderer *renderer)
 {
 	for (int i = 0; i < projectiles.size(); i++)
 	{
-		SDL_Rect renderQuad = { position.x, position.y, 32, 32 };
-		SDL_RenderCopyEx(renderer, SDLTexture, NULL, &renderQuad, NULL, NULL, SDL_FLIP_NONE);
+		projectiles[i].Render(renderer);
+	}
+}
+
+void Weapon::Update()
+{
+	for (int i = 0; i < projectiles.size(); i++) {
+		projectiles[i].Update();
+		if (projectiles[i].isDead) {
+			projectiles.erase(projectiles.begin() + i);
+		}
 	}
 }

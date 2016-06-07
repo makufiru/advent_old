@@ -2,28 +2,37 @@
 
 #include <SDL.h>
 #include <SDL_image.h>
-#include "utils.h"
+#include "vector2.h"
 #include "Texture.h"
 
 class Projectile
 {
 public:
-	Projectile(Vector2 position);
+	Projectile(SDL_Renderer *renderer, Vector2 position, Vector2 direction, double angle);
 	~Projectile();
 
+	void Update();
+	void Render(SDL_Renderer *renderer);
+
+
+	bool isDead;
 	//SDL_Texture* getProjectileTexture();
 	//void render(SDL_Renderer *renderer);
 	
 private:
-	
-	SDL_Renderer *renderer;
-	Texture renderTexture;
+
+	double rotation;
+	Vector2 position;
+	Vector2 direction;
+	float velocity;
+	Texture projectileTexture;
+	SDL_Texture *SDLTexture;
 	int width;
 	int height;
+	int ttl;
+	int lifetime;
 
 	//bullet coords
-	Vector2 pos;
-	Vector2 vel;
 };
 
 

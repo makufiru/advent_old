@@ -4,6 +4,7 @@
 
 Input::Input()
 {
+	mousePosition = new Vector2(0, 0);
 	SDL_ShowCursor(SDL_DISABLE);
 }
 
@@ -50,8 +51,10 @@ void Input::ProcessInput()
 			}
 		}
 	}
-	SDL_GetMouseState(&mousePosition.x, &mousePosition.y);
-	
+	int mousePosX, mousePosY;
+	SDL_GetMouseState(&mousePosX, &mousePosY);
+	mousePosition->X = mousePosX;
+	mousePosition->Y = mousePosY;	
 }
 
 bool Input::KeyPressed(InputEvent input)
@@ -59,7 +62,7 @@ bool Input::KeyPressed(InputEvent input)
 	return keyStateMap[input];
 }
 
-MousePosition Input::GetMousePosition()
+Vector2* Input::GetMousePosition()
 {
 	return mousePosition;
 }

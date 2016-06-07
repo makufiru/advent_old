@@ -66,12 +66,12 @@ void Texture::Free()
 }
 
 
-int Texture::GetWidth()
+float Texture::GetWidth()
 {
 	return width;
 }
 
-int Texture::GetHeight()
+float Texture::GetHeight()
 {
 	return height;
 }

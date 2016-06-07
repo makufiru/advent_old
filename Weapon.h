@@ -11,14 +11,12 @@ public:
 	Weapon(SDL_Renderer *renderer);
 	void Render(SDL_Renderer *renderer);
 	SDL_Texture* GetProjectileTexture();
-	void Shoot(Vector2 position);
+	void Shoot(Vector2 position, Vector2 direction, double angle);
+	void Update();
 	//vector to contain projectiles
 	std::vector<Projectile> projectiles;
 	double shotInterval = 250;
 
 private:
-	Texture projectileTexture;
-	SDL_Texture *SDLTexture;
-	Vector2 position;
+	SDL_Renderer *renderer;
 };
-

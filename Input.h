@@ -2,12 +2,7 @@
 #include <iostream>
 #include <string>
 #include <unordered_map>
-
-struct MousePosition
-{
-	int x;
-	int y;
-};
+#include "vector2.h"
 
 enum InputEvent
 {
@@ -25,9 +20,11 @@ public:
 	~Input();
 	void ProcessInput();
 	bool KeyPressed(InputEvent input);
-	MousePosition GetMousePosition();
+	Vector2* GetMousePosition();
+
 
 private:
-	MousePosition mousePosition;
+	Vector2* mousePosition;
+
 	std::unordered_map<InputEvent, bool> keyStateMap;
 };

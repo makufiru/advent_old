@@ -28,6 +28,9 @@
     <Filter Include="Source Files\entities\particles">
       <UniqueIdentifier>{8b18864a-2fb7-4428-b157-0bba55d49fa7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\math">
+      <UniqueIdentifier>{8718efbd-6101-47f4-9902-c26a9f601634}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -53,6 +56,9 @@
     </ClCompile>
     <ClCompile Include="Weapon.cpp">
       <Filter>Source Files\entities</Filter>
+    </ClCompile>
+    <ClCompile Include="vector2.cpp">
+      <Filter>Source Files\math</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -80,8 +86,8 @@
     <ClInclude Include="Weapon.h">
       <Filter>Source Files\entities</Filter>
     </ClInclude>
-    <ClInclude Include="Utils.h">
-      <Filter>Source Files</Filter>
+    <ClInclude Include="vector2.h">
+      <Filter>Source Files\math</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
