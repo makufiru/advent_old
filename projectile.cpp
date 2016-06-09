@@ -14,7 +14,7 @@ Projectile::Projectile(SDL_Renderer *renderer, Vector2 position, Vector2 directi
 	this->direction = direction;
 	
 	velocity = 0.1;
-	ttl = 300;
+	ttl = 30;
 	lifetime = 0;
 	isDead = false;
 	
@@ -37,7 +37,7 @@ void Projectile::Update()
 
 	lifetime++;
 	if (lifetime >=ttl) {
-		//isDead = true;
+		isDead = true;
 	}
 }
 
