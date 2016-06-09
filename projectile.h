@@ -25,8 +25,6 @@ private:
 	Vector2 position;
 	Vector2 direction;
 	float velocity;
-	Texture projectileTexture;
-	SDL_Texture *SDLTexture;
 	int width;
 	int height;
 	int ttl;

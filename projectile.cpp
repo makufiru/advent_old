@@ -1,10 +1,14 @@
 #include "Projectile.h"
 
+static Texture texture;
+static SDL_Texture* projectileTexture = 0;
+
 Projectile::Projectile(SDL_Renderer *renderer, Vector2 position, Vector2 direction, double angle)
 {
-	projectileTexture.LoadFromFile(renderer, "resources/bulletSprite_1.png");
-	SDLTexture = projectileTexture.GetTexture();
-
+	if (projectileTexture == 0) {
+		texture.LoadFromFile(renderer, "resources/bulletSprite_1.png");
+		projectileTexture = texture.GetTexture();
+	}
 	this->position = position;
 	rotation = angle;
 	this->direction = direction;
@@ -23,7 +27,7 @@ Projectile::~Projectile()
 void Projectile::Render(SDL_Renderer *renderer) 
 {
 	SDL_Rect renderQuad = { position.X, position.Y, 8, 8 };
-	SDL_RenderCopyEx(renderer, SDLTexture, NULL, &renderQuad, rotation, NULL, SDL_FLIP_NONE);
+	SDL_RenderCopyEx(renderer, projectileTexture, NULL, &renderQuad, rotation, NULL, SDL_FLIP_NONE);
 }
 
 void Projectile::Update()
@@ -32,7 +36,7 @@ void Projectile::Update()
 	position.Y += direction.Y * velocity;
 
 	lifetime++;
-	if (lifetime == ttl) {
+	if (lifetime >=ttl) {
 		isDead = true;
 	}
 }
